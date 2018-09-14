@@ -225,6 +225,54 @@ Rephasing gradient: $\frac{|\int d tG_{rephase}|}{|\int d tG_{SS}|}=50\%$.
 \end{block}
 \end{frame}
 
+\section{Filtering and resolution in Fourier T imaging}
+
+\begin{frame}{FOV and spatial resolution}
+    \begin{block}{Limited F imaging: partial k-space coverage}
+    Time limitation restrict data sampled per readout ($N_x$), phase encoding ($N_y$) and partition encoding ($N_z$): reconstructed spin data for finite sampling $\hat{\rho}$.
+    \begin{equation*}
+        \rho(x)=\Delta k\sum_{p=-n}^{n-1}s(p\Delta k)\exp{i2\pi p\Delta k_x}
+    \end{equation*}
+    $W=2n\Delta k=$
+    \end{block}
+    \begin{block}{Aliasing (Nyquist criterion) and spatial resolution}
+    To avoid aliasing $L=\FOV{}>A$: field of view $L=\invers{\Delta k}$ greater than object dimension.
+    \end{block}
+\begin{block}{Spatial resolution}
+L'altra meta della trasformata di Fourier discreta
+\begin{equation*}
+s(k)=\Delta x\sum_{q=-n}^{n-1}\rho(q\Delta x)\exp{-i2\pi kq\Delta x}
+\end{equation*}
+Spatial resolution: $\Delta x=\frac{L}{N}=\frac{1}{N\Delta k}=\frac{1}{W}$ con $N=2n$.
+\end{block}
+\end{frame}
+
+\begin{frame}{Filter and PSF}
+A k-space filter $H(k)$ is a function that multiplies k-space MRI data, the F trasform is the associated PDF $h(x)$: $\rho(x)\to h(x)\circledast \rho(x)$.
+\begin{block}{Continuus sampled truncated data}
+\begin{align*}
+&H_w(k)=\rect{(\frac{k+\Delta k/2}{W})}\\
+&s_w(k)=s(k)H_w(k)
+\end{align*}
+\end{block}
+\begin{block}{Gibbs ringing}
+Fourier series repr. of function with steps
+\end{block}
+\begin{block}{Spatial resolution filter}
+For arb. imaging method with PSF $h_{filter}(x)$ the spatial resolution is the area under the filter divide by $h(0)$:
+\begin{equation*}
+\Delta x_{filter}=\text{filter's blur}=\frac{1}{h_f(0)}\int d\,xh_f(x)=\frac{H_f(0)}{h_f(0)}
+\end{equation*}
+\end{block}
+\end{frame}
+
+\begin{frame}{$T_2^*$ decay effects}
+When sampling time $T_s$ is comparable to $T_2^*$ the exponential decay has filtering action on $s(k)$: filter model $\exp{-t'/T_2^*}$
+\begin{equation*}
+H_f(k)=\exp{-|k|/(\gammabar GT_2^*)}
+\end{equation*}
+\end{frame}
+
 \section{Noise and contrast}\linkdest{noisecontrast}
 
 \begin{frame}{Nyquist criterion and resolution}
