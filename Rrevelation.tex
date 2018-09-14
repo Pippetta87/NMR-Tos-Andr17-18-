@@ -1,0 +1,30 @@
+\section{Tecniche di rivelazione}\linkdest{tech}
+
+\begin{frame}{Classi di rivelatori}
+\begin{itemize}
+\item Passivo in onda continua: generatore separato dal circuito LC. Induzione di Bloch, Q-meter, metodi a ponte
+\item Attivi in onda continua: il circuito risonante contenente il campione fa parte di un oscillatore la cui ampiezza varia al passaggio dalla risonanza. Marginale, Robinson.
+\item Tecniche passive impulsive: inducono nel campione stati di magnetizzazione di non equilibrio per determinare i tempi di rilassamento (ritorno a equilibrio termodinamico).
+\end{itemize}
+\end{frame}
+
+\subsection{CW NMR}
+
+\begin{frame}{CW measurement}
+\begin{columns}  \begin{column}{0.5\textwidth}
+\begin{align*}
+&I(t)=\frac{V_0\cos{\omega t+\phi}}{Z}\\
+&Z=\sqrt{R^2+(X_L-X_C)^2}\ \phi=\arctan{\frac{X_L-X_C}{R}}\\
+&V_C=X_CI=\frac{|V_0|}{\sqrt{\tau^2\omega^2+(\frac{\omega^2}{\omega_0^2}-1)^2}}\ \tau=RC
+\end{align*}
+\end{column} \begin{column}{0.5\textwidth}
+Guadagno
+\begin{align*}
+&|G|^2=\frac{V_C^2}{V_0^2}\\
+&=\frac{1}{(\frac{1}{Q})^2 \frac{\omega^2}{\omega_0^2}+(\frac{\omega^2}{\omega_0^2}-1)^2}\\
+&=\frac{\omega_0^4}{\omega^2\delta^2+(\omega^2-\omega_0^2)^2}
+\end{align*}
+$\delta=R/L$ 
+\end{column}  \end{columns}
+$\chi(\omega)=\chi'+i\chi''$
+\end{frame}

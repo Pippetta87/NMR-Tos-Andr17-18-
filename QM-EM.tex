@@ -1,0 +1,100 @@
+\section{NMR in MQ}\linkdest{NMR-MQ}
+
+\begin{wordonframe}{MQ: operatori, autovalori equazione di Schroedinger}
+\begin{columns}[T]\begin{column}{0.5\textheight}
+\begin{block}{Operatori MQ. Equazione di \scr{}.}
+\begin{align*}
+&P=-i\hbar\nabla,\ H=-\frac{\hbar^2}{2m}\nabla^2+U\\
+&\vec{J}=\vec{L}+\vec{S}\\
+&j=|l-s|,\ldots,l+s\\
+&j^2=j(j+1)\hbar^2,\ j_z=m_j\hbar\\
+&F_z=\mu_zG_z=\mu_z\PDy{z}{B_z}\\
+&H\psi=i\hbar\PDy{t}{\psi}:\ \psi=\psi(\vec{r})\exp{-\frac{iEt}{\hbar}}\\
+&[p_x,x]=-i\hbar,\ [J_x,J_y]=i\hbar J_z
+\end{align*}
+\end{block}
+\end{column} \begin{column}{0.5\textheight}
+\begin{block}{Protone. Spin.}\end{block}
+\begin{align*}
+&\vec{S}=\frac{1}{2}\hbar\vec{\sigma}\\
+&\gamma=g\mu_M,\ \mu_M=\frac{e}{2M}
+\end{align*}%succo
+Zeeman energy levels: $\Delta E=\frac{1}{2}\gamma B_0\hbar-(-\frac{1}{2}\gamma\hbar B_0)=\hbar\omega_0$.
+
+\end{column}\end{columns}
+\begin{equation*}\sigma_i=,\ \sigma_x=\begin{pmatrix}0&1\\1&0\end{pmatrix},\ \sigma_y=\begin{pmatrix}0&-i\\i&0\end{pmatrix},\ \sigma_z=\begin{pmatrix}1&0\\0&-1\end{pmatrix}
+ \end{equation*}
+\end{wordonframe}
+
+\begin{frame}{Soluzione equatione di Schroedinger per spin in campo magnetico costante}
+\begin{align*}
+&H\psi=E\phi,\ H=-\scap{\mu}{B}\text{Per j fissato:}\\
+&\psi(\vec{r},t)=\sum_{m_j=-j}^jC_{m_j}\psi_{}(\vec{r})\exp{-\frac{i}{\hbar}E_{m_j}t}\ E_{m_j}=-\gamma m_j\hbar B_0
+\end{align*}
+\begin{block}{Precessione attorno a $B_0$}
+
+\begin{columns}[T] \begin{column}{0.6\textheight}
+Per protone: $H=-\gamma B_0S_z=\begin{pmatrix}-1/2\hbar\omega_0&0\\0&1/2\hbar\omega_0\end{pmatrix}$.
+\begin{align*}
+&\braket{\psi/\vec{\mu}|\psi}=\int\psi*\vec{\mu}\psi d V=\psi*\vec{\mu}\psi V\\
+&\exv{\mu_x}=\frac{\gamma\hbar}{2}\sin{\theta}\cos{(\phi_0-\omega_0t)}\\
+&\exv{\mu_y}=\frac{\gamma\hbar}{2}\sin{\theta}\sin{(\phi_0-\omega_0t)}\\
+&\exv{\mu_z}=\frac{\gamma\hbar}{2}\cos{\theta}
+\end{align*}
+\end{column}
+\begin{column}{0.4\textheight}
+Soluzione: $\psi_+=\begin{pmatrix}1\\0\end{pmatrix}$/$\psi_-=\begin{pmatrix}0\\1\end{pmatrix}$, $E_{\pm}=\mp \frac{1}{2}\hbar\omega_0$.
+Il valore di aspettazione della magnetizzazione \'e un vettore di ampiezza $\frac{\gamma\hbar}{2}$ che precede con velocit\'a $\omega_0$.
+\end{column}\end{columns}
+\end{block}
+
+\end{frame}
+
+\begin{wordonframe}{Valore di aspettazione momento magnetico protone in campo esterno}
+\begin{align*}
+&\braket{\psi|\vec{\mu}|\psi}=\gamma\sum_{m,m'}C_mC_{m'}\dag\psi_{m'}\dag\vec{S}\psi_m \exp{-\frac{i(E_{m'}-E_m)t}{\hbar}}\\
+&\psi_{m'}\dag|vec{\sigma}\psi_m=\hat{x}\delta_{m',m}+2mi\hat{y}\delta_{m',-m}+2m\hat{z}\delta_{m',m}\\
+&V\sum|C_m|^2=1,\ C_{\pm}=a_{\pm}\exp{i\alpha_{\pm}}\\
+&a_+=\frac{\cos{\Theta}}{\sqrt{V}},\ a_-=\frac{\sin{\Theta}}{\sqrt{V}},\ \Theta=\frac{\theta}{2},\ \phi_0=\alpha_--\alpha_+
+\end{align*}
+
+\end{wordonframe}
+
+\begin{frame}{RF spin tipping (ribaltamento)}
+\begin{block}{RF field}
+\begin{equation*}
+H(t)=-\scap{\mu}{B}(t)=\frac{\gamma\hbar}{2}(\sigma_zB_0+(\sigma_x\cos{\omega t}-\sigma_y\sin{\omega t})B_1)
+\end{equation*}
+\end{block}
+\begin{block}{Soluzione equazione \scr{} in riferimento rotante}
+\begin{equation*}\Psi=\psi_1'(t)\psi_+\exp{i\omega_0t/2}+\psi_2'(t)\psi_-\exp{-i\omega_0t/2}\end{equation*}
+\end{block}
+\begin{align*}
+&\exv{\mu_x(t)}=\frac{\gamma\hbar}{2}\sin{\Theta}\cos{\Phi}\\
+&\exv{\mu_y(t)}=\frac{\gamma\hbar}{2}[\cos{\Theta}\sin{(\omega_1t)}+\sin{\Theta}\cos{(\omega_1t)}\sin{\Phi}]\\
+&\exv{\mu_z(t)}=\frac{\gamma\hbar}{2}[\cos{\Theta}\sin{\omega_1t}-\sin{\theta}\sin{(\omega_1t)}]\\
+&\Phi=\phi_1-\phi_2-\pi/2
+\end{align*}
+
+\end{frame}
+
+\begin{wordonframe}{Spin tipping in rotating frame}
+In riferimento rotante, la componente di $\vec{\sigma}$ su $\hat{x'}$ e $\hat{y'}$:
+\begin{align*}
+&\sigma_{x'}=\sigma_{x}\cos{\omega t}-\sigma_{y}\sin{\omega t}=\begin{pmatrix}0&\exp{i\omega t}\\\exp{-i\omega t}&0\end{pmatrix}\\
+&\sigma_{y'}=\sigma_{x}\sin{\omega t}+\sigma_{y}\cos{\omega t}=\begin{pmatrix}0&-\exp{i\omega t}\\\exp{-i\omega t}&0\end{pmatrix}
+\end{align*}
+Soluzioni nel SR rotante:
+\begin{align*}
+&\psi_1'=c_1\cos{\frac{\omega_1t}{2}}+c_2\sin{\frac{\omega_1t}{2}}\\
+&\psi_1'=c_3\cos{\frac{\omega_1t}{2}}+c_4\sin{\frac{\omega_1t}{2}}\\
+&c_3=-ic_2,\ c_4=ic_1\\
+&c_1=\frac{1}{\sqrt{V}}\cos{\Theta/2}\exp{-i\phi_1}\\
+&c_2=\frac{1}{\sqrt{V}}\sin{\Theta/2}\exp{-i\phi_2}
+\end{align*}
+\end{wordonframe}
+
+\begin{frame}{Equilibrium properties: spin excess and magnetization}
+Per $\frac{\hbar\omega}{KT}\ll1$ si ha spin excess $N\frac{\hbar\omega_0}{2KT}$. 
+$M_0=\frac{\rho_0\gamma^2\hbar^2}{4KT}B_0$
+\end{frame}
