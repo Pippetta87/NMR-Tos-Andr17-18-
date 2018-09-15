@@ -327,10 +327,51 @@ The discarded part are responsable for relaxation.
 &G(\tau)\exv{B_x(t)B_x(t+\tau)}\neq0
 \end{align*}
 \end{block}
+\begin{block}{Densit\'a spettrale}
+\begin{align*}
+&J(\omega)=2\int_0^{+\infty}G(\tau)\exp{-i\omega\tau}d\,\tau\\
+&\to2\exv{B_x^2}A(\omega;0,\invers{\tau_c})\\
+&=2\exv{B_x^2}\frac{\tau_c}{1+\omega^2\tau_c^2}
+\end{align*}
+\end{block}
 \end{column}
 \begin{column}{0.5\textwidth}
 Spin indipendent assumption: not strictly true for any mechanism
+\begin{block}{Correlation time}
+\begin{equation*}
+G(\tau)=\exv{B_x^2}\exp{-\tau/\tau_c}
+\end{equation*}
+How long it take before random field changes sign
+\end{block}
 \end{column}
 \end{columns}
-    
+\end{frame}
+
+\begin{frame}{Transition probability and spin-lattice relaxation}
+\begin{columns}[T]
+\begin{column}{0.6\textwidth}
+\begin{block}{Transition probability $\ket{\alpha}\to\ket{\beta}$ and thermal equilibrium}
+\begin{align*}
+&W_-=\invers{\tau}\exv{|\braket{\beta|\alpha'}|^2}\\
+&W_+=\invers{\tau}\exv{|\braket{\alpha|\beta'}|^2}\\
+&\rho_{\alpha}^{eq}W_-=\rho_{\beta}^{eq}W_+
+\end{align*}
+\end{block}
+\end{column}
+\begin{column}{0.4\textwidth}
+\begin{figure}
+    \centering
+    \includegraphics[keepaspectratio,width=0.9\textwidth]{transitionp}
+    \label{fig:transitionp}
+\end{figure}
+\begin{align*}
+&W_-=W(1-\frac{1}{2}\frac{\hbar\gamma B_0}{KT})\\
+&W_+=W(1+\frac{1}{2}\frac{\hbar\gamma B_0}{KT})\\
+&W=\frac{1}{2}\gamma^2\exv{B_x^2}\frac{\tau_c}{1+(\omega_0\tau_c)^2}
+\end{align*}
+\end{column}
+\end{columns}
+\begin{align*}
+&\invers{T_1}=\gamma^2\exv{B_x^2}\frac{\tau_c}{1+(\omega_0\tau_c)^2}
+\end{align*}
 \end{frame}
