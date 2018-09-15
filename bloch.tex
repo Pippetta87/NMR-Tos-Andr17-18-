@@ -268,6 +268,18 @@ Legge di Curie: $M_0=C\frac{B_0}{T}$,valore di equilibrio.
 \item RF: Coherence excitation ($\pi/2|_x$, $\pi|_x$ inversion of population.
 \item $B_0$: Different population of Zeeman splitted levels in thermal equilibrium.
 \end{itemize}
+\begin{block}{Coerenza e popolazione}
+\begin{figure}
+    \centering
+    \includegraphics[height=0.4\textheight,keepaspectratio]{densitym}
+    \label{fig:densitym}
+\end{figure}
+\begin{align*}
+&M_z\propto\rho_{\alpha}-\rho_{\beta}\\
+&M_x\propto\Re{\rho_-}, M_y\propto\Im{\rho_-}
+\end{align*}
+
+\end{block}
 \end{column}
 \begin{column}{0.5\textwidth}
 \begin{block}{Spontaneous/induced emission in system of spin}
@@ -277,3 +289,48 @@ Legge di Curie: $M_0=C\frac{B_0}{T}$,valore di equilibrio.
 \end{columns}
 \end{frame}
 
+\begin{wordonframe}{Sistema di spin: Coerenza e popolazione}
+L'energia del sistema viene aumentata dallo stato iniziale di equilibrio termico allo stato in cui le popolazioni sono in uguali, il secondo impulso aumenta ancora energia generando inversione della popolazione dei livelli mentre terzo e quarto fanno diminuire energia del sistema
+\end{wordonframe}
+
+\begin{frame}{Motional timescale. Averaging and relaxation}
+
+    \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+    \begin{figure}
+    \centering
+    \includegraphics[width=0.99\textwidth, trim={0 0 15cm 0},clip]{motiontau}
+    \label{fig:motiontau}
+\end{figure}
+    \end{column}
+        \begin{column}{0.5\textwidth}
+    \begin{figure}
+    \centering
+    \includegraphics[width=0.99\textwidth, trim={15cm 0 1cm 0},clip]{tauproc}
+    \label{fig:tauproc}
+\end{figure}
+    \end{column}
+    \end{columns}
+    \begin{itemize}
+    \item Secular approximation arise because spin dynamics is dominated by interactions with large externalo magnetic field. Diagonal blocks.
+    \item Motional averaging: can average over sufficient fast molecular motion
+\end{itemize}
+The discarded part are responsable for relaxation.
+\end{frame}
+
+\begin{frame}{Random field and spectral density}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{block}{Autocorrelation function}
+\begin{align*}
+&\exv{B_x(t)}=0,\ \exv{B_x^2(t)}\neq0\\
+&G(\tau)\exv{B_x(t)B_x(t+\tau)}\neq0
+\end{align*}
+\end{block}
+\end{column}
+\begin{column}{0.5\textwidth}
+Spin indipendent assumption: not strictly true for any mechanism
+\end{column}
+\end{columns}
+    
+\end{frame}
