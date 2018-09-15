@@ -227,6 +227,16 @@ Rephasing gradient: $\frac{|\int d tG_{rephase}|}{|\int d tG_{SS}|}=50\%$.
 
 \section{Filtering and resolution in Fourier T imaging}
 
+\begin{frame}{Nyquist criterion and resolution}
+$\frac{1}{\Delta k}=L=FOV$, A object size:
+\begin{align*}
+&\Delta k<\frac{1}{A}\\
+&(\Delta k_R=\gammabar\int_t^{t+\Delta t}d t'G_R(t')=\frac{1}{L_R}<\frac{1}{A_R})\\
+&f_R=BW_{read}=\frac{1}{\Delta t}=\gammabar G_RL_R>\gammabar G_RA_R
+\end{align*}
+Risoluzione: $\Delta x=\frac{1}{2n\Delta k}$, $k=(-n\Delta k,(n-1)\Delta k)$.
+\end{frame}
+
 \begin{frame}{FOV and spatial resolution}
     \begin{block}{Limited F imaging: partial k-space coverage}
     Time limitation restrict data sampled per readout ($N_x$), phase encoding ($N_y$) and partition encoding ($N_z$): reconstructed spin data for finite sampling $\hat{\rho}$.
@@ -267,38 +277,64 @@ For arb. imaging method with PSF $h_{filter}(x)$ the spatial resolution is the a
 \end{frame}
 
 \begin{frame}{$T_2^*$ decay effects}
-When sampling time $T_s$ is comparable to $T_2^*$ the exponential decay has filtering action on $s(k)$: filter model $\exp{-t'/T_2^*}$
+When sampling time $T_s=\frac{2n\Delta k}{\gammabar|G|}$ is comparable to $T_2^*$ the exponential decay has filtering action on $s(k)$: filter model $\exp{-t'/T_2^*}$
 \begin{equation*}
 H_f(k)=\exp{-|k|/(\gammabar GT_2^*)}
 \end{equation*}
+approximable in most MRI cases ($\Delta k=\gammabar|G|\Delta t\ll\gammabar|G|T_2^*$):
+\begin{equation*}
+\Delta x_{T_2^*f}=\Delta x\frac{\alpha}{1-\exp{-\alpha}}
+\end{equation*}
+with $\alpha=\frac{T_s}{2T_2^*}$
 \end{frame}
 
 \section{Noise and contrast}\linkdest{noisecontrast}
 
-\begin{frame}{Nyquist criterion and resolution}
-$\frac{1}{\Delta k}=L=FOV$, A object size:
+\begin{frame}[allowframebreaks]{Signal and thermal noise}
+
+\begin{block}{Segnale misurato}
+Segnale misurato $s_m(k)$ somma $s_m(k)=s(k)+\epsilon(k)$ con funzione di autocorrelazione del rumor
+\begin{equation*}
+    R_{\epsilon}(\tau)=\exv{\epsilon(k_p)\epsilon^*{k_q}}|_{\tau=k_p-k_q}=\sigma_m^2\delta(\tau)
+\end{equation*}
+Rumore bianco distribuito normalmente con media 0 e varianza $\sigma_m^2$
+\end{block}
+\begin{block}{Noise in image domain}
 \begin{align*}
-&\Delta k<\frac{1}{A}\\
-&(\Delta k_R=\gammabar\int_t^{t+\Delta t}d t'G_R(t')=\frac{1}{L_R}<\frac{1}{A_R})\\
-&f_R=BW_{read}=\frac{1}{\Delta t}=\gammabar G_RL_R>\gammabar G_RA_R
+&\eta(p\Delta x)=\frac{1}{N}\sum_{p'}\epsilon(p'\Delta k)\exp{i2\pi p'\Delta kp\Delta x}\\
+&\var{(\eta(p\Delta x))}=\sigma_0^2(p\Delta x)=\frac{\sigma_m^2}{N}\\
+&\rho_m(p\Delta x)=\rho_{m,0}(p\Delta x)+\eta(p\Delta x)\\
+&\sigma_0^2(p\Delta x)|_{3D}=\frac{\sigma_m^2}{N_xN_yN_z}
 \end{align*}
-Risoluzione: $\Delta x=\frac{1}{2n\Delta k}$, $k=(-n\Delta k,(n-1)\Delta k)$.
+\end{block}
 \end{frame}
 
-\begin{frame}[allowframebreaks]{SNR e contrasto}
-\begin{block}{Signal to Noise ratio}
-$SNR=\frac{s}{\sigma_{noise}}$:
+\begin{frame}[allowframebreaks]{SNR and imaging parameters}
+\begin{block}{Signal to Noise ratio and multi measures average}
+k-space averaged sample
 \begin{align*}
-&\sigma^2(emf_{noise})-\sigma_{TH}^2\propto\bar{(emf_{noise}-\bar{emf_{noise}})^2}=4KTR_EBW
+&s_{m,av}(k)=\frac{1}{N_{acq}}\sum_{i=1}^{N_a}s_{m,i}(k)\\
+&\exv{s_{m,av}(k)}=s(k),\ \sigma_{m,av}(k)=\frac{\sigma_m(k)}{\sqrt{N_{acq}}}
 \end{align*}
-$R_E$ resistenza effettiva coil+body.
+$\SNR{}$ of k-space signal and of given VXL:
 \begin{align*}
-&\SNR/Vxl\propto\frac{\sqrt{N_{aqr}}}{\sigma_0}\quad \Delta t= \frac{1}{\BW_{read}},\ T_s=N_x\Delta t\\
-&\SNR/Vxl\propto \frac{\Delta x\Delta y\Delta z\sqrt{N_a}}{\BW_{read}/(N_xN_yN_z)}
+&\SNR{(k)}=\frac{\exv{s_{m,av}(k)}}{\sigma_{m,av}(k)}=\sqrt{N_{acq}}\frac{s(k)}{\sigma_m(k)}\\
+&\SNR{}/\VXL{}(p\Delta x, q\Delta y, r\Delta z)\propto\frac{\sqrt{N_{acq}}}{\sigma_0}
+\end{align*}
+\end{block}
+\begin{block}{SNR and imaging parameters}
+\begin{align*}
+&\SNR{}/\VXL{}\propto\frac{\Delta x\Delta y\Delta z\sqrt{N_{acq}}}{\sqrt{\frac{\BWr{}}{N_xN_yN_z}}}\\
+&\propto\Delta x\Delta y\Delta z\sqrt{N_{acq}N_xN_yN_z\Delta t}\\
+&\Delta t= \frac{1}{\BW_{read}}=\frac{1}{L_x\gammabar G_x},\ T_s=N_x\Delta t\\
+&\propto\Delta x\Delta y\Delta z\sqrt{N_{acq}N_xN_yN_zT_s}
 \end{align*}
 Degrading resolution to improve SNR.
 \end{block}
-\begin{block}{Contrasto tessuto A/B}
+\end{frame}
+
+\begin{frame}{Contrasto}
+    \begin{block}{Contrasto tessuto A/B}
 \begin{align*}
 &C_{AB}=S_A-S_B\\
 &=\rho_{0A}(1-\exp{-\frac{T_R}{T_{1A}}})\exp{-\frac{T_E}{T*_{2A}}}-\rho_{0B}(1-\exp{-\frac{T_R}{T_{1B}}})\exp{-\frac{T_E}{T*_{2B}}}
@@ -310,4 +346,44 @@ Spin density weighting:
 $T_1$-weighting: $T_E\ll {T_2^*}_{AB}$.
 $T_2^*$-weighting: $T_R\gg {T_1}_{AB}$.
 \end{block}
+\end{frame}
+
+\section{FAt-Water separation}
+
+\begin{wordonframe}{Fat-Water separation methods}
+\begin{itemize}
+    \item Chemical shift
+    \item Selective excitation and tissue nulling
+    \item Multiple point separation methods
+\end{itemize}
+\end{wordonframe}
+
+\section{Random walks, relaxation and diffusion}
+
+\begin{frame}{Molecular model for $T_2$}
+Rapide fluttuazioni nel campo magnetico locale (pi\'u rapide di $\tau_L$): moto browniano, spin.
+i-esimo spin \'e lungo $y'$: rapide fluttuazioni nel momento torcente determinano random walk di $\vec{\mu}_i$ sulla sfera unitaria. Distribuzione della fase gaussiana
+\begin{equation*}
+P(\phi)=\frac{\exp{-\phi^2/(2\exv{\phi_i^2})}}{\sqrt{2\pi\exv{\phi_i^2}}}    
+\end{equation*}
+e la componente trasversale $M_+$
+\begin{equation*}
+M_+=\frac{M_0}{\sqrt{2\pi\exv{\phi_i^2}}}\int d\,\phi\exp{i\phi}\exp{-\phi_i^2/(2\exv{\phi_i^2})}=M_0\exp{-\exv{\phi_i^2}/2}
+\end{equation*}
+\begin{block}{Brownian motion and $T_2$ signal loss}
+Precession frequency of spin i around z is $\gamma B_{i,z}$: spin motion every $\tau_2$ and intrinsic B at j position
+\begin{align*}
+&\phi_i(N\tau_2)=\sum_j\gamma B_{i,z,j}\tau_2,\quad \exv{\phi_i^2(N\tau_2)}=\gamma^2\tau_2^2\sum_j\exv{B_{izj}^2}\to\frac{1}{3}\gamma^2\tau_2^2N\exv{B^2}\\
+&M_+=M_0\exp{-\gamma^2\tau_2\exv{B^2}t/6},\quad T_2=\frac{6}{\gamma^2\tau_2\exv{B^2}}
+\end{align*}
+\end{block}
+\end{frame}
+
+\begin{frame}{Diffusion}
+$x\to x+\epsilon_i\delta$ every $\tau_d$ seconds
+\begin{align*}
+&B(j\tau_d)=B(0)+G\delta\sum_i^j\epsilon_i\\
+&\phi=-\sum^N\gamma\tau_d\Delta B(j\tau_d)=-G\delta\gamma\tau_d\sum_j^N\sum_i^j\epsilon_i\\
+&M_+=M_0\exp{-\gamma^2 G^2\delta^2 t^3/(6\tau_d)}\to M_0\exp{-t/T_2}\exp{-\gamma^2 G^2Dt^3/3}
+\end{align*}
 \end{frame}
