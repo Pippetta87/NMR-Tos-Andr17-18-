@@ -259,7 +259,7 @@ Legge di Curie: $M_0=C\frac{B_0}{T}$,valore di equilibrio.
     
 \end{frame}
 
-\section{Tipi di rilassamento}
+\section{Tempi di rilassamento}\linkdest{relaxation}
 
 \begin{frame}{Sistema spin isolati (only intra group interaction??). Magnetizzazione, popolazione livelli e coerenza}
 \begin{columns}[T]
@@ -386,7 +386,7 @@ How long it take before random field changes sign
 \begin{frame}{DD relaxation (L584)}
 Most important relaxation mechanism: secular part average to zero in iso-liquid but non-secular causes relaxation.
 \begin{columns}[T]
-\begin{column}{0.5\textwidth}
+\begin{column}{0.6\textwidth}
 \begin{align*}
 &W_1\propto j(\omega_0)\\
 &W_2\propto j(2\omega_0)\\
@@ -395,12 +395,19 @@ Most important relaxation mechanism: secular part average to zero in iso-liquid 
 &\tau_c(\text{short}):\ W_2<W_1<W_0
 \end{align*}
 Long $\tau_c$: large molecules or viscous solution. Short $\tau_c$: small molecules in non-voscous solution
+\begin{block}{Solomon eqs.: $T_1$ e $T_2$}
+dipolar relaxation process of a system consisting of two spins
+\begin{align*}
+&\invers{T_1}\propto(j(\omega_0)+4j(2\omega_0))\\
+&\invers{T_2}\propto(3j(0)+5j(\omega_0)+2j(2\omega_0))
+\end{align*}
+\end{block}
 \end{column}
-\begin{column}{0.5\textwidth}
+\begin{column}{0.4\textwidth}
 \begin{block}{Single-Double-zero quantum transition prob.}
 \begin{figure}[!ht]
     \centering
-    \includegraphics[keepaspectratio,width=0.9\textwidth]{sdztransP}
+    \includegraphics[keepaspectratio,width=0.6\textwidth]{sdztransP}
     \label{fig:sdztransP}
 \end{figure}
 
