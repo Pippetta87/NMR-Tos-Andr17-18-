@@ -98,7 +98,8 @@ Impulso $\pi$ attorno $x'$ e a $T_I$ di $\pi/2$
 
 Broadband RF excitation: complicated FID signal
 \begin{align*}
-&\omega_{0i}=\gamma_iB_0
+&\omega_{0i}=\gamma_iB_0\\
+&\vec{B}_j^{ind}=\delta_j\vec{B}_0
 \end{align*}
 
 Shielding constant: linear response of electrons to $B_{ext}$:
@@ -122,10 +123,11 @@ Frequency encoding: $\omega_G=\gamma zG(t)$.
 \phi_G(z,t)=-\int_0^td t'\omega_G(z,t')=-\gamma z\int_0^td t'G(t)
 \end{equation*}
 
-1D imaging equation:
-\begin{equation*}
-s(t)=\int d z\rho(z)\exp{i\phi_G(z,t)}
-\end{equation*}
+1D imaging equation (after demodulation):
+\begin{align*}
+&s(t)=\int d z\rho(z)\exp{i\phi_G(z,t)}\to s(k)=\int d\,z\rho(z)\exp{-i2\pi kz}\\
+&\rho(z)=\int d\,ks(k)\exp{i2\pi kz}
+\end{align*}
 $\rho$ effective spin density.
 
 \end{frame}
@@ -140,17 +142,21 @@ $\rho$ effective spin density.
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Imaging in 3D: 3D imaging  vs 2D multislice imaging}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
 3D imaging:
-\begin{figure}[!ht]\includegraphics[trim={0cm 0cm 0 0},clip, keepaspectratio,height=0.5\textheight]{3Dimaging}\label{fig:3Dimaging}\end{figure}
-
+\begin{figure}[!ht]\includegraphics[trim={5cm 0cm 5cm 0},clip, keepaspectratio,width=0.99\textwidth]{3Dimaging}\label{fig:3Dimaging}\end{figure}
+\end{column}
+\begin{column}{0.49\textwidth}
 2D multi-slice imaging:
-\begin{figure}[!ht]\includegraphics[trim={0cm 0cm 0 0},clip, keepaspectratio,width=0.4\textwidth]{sliceGBW}\label{fig:sliceGBW}\end{figure}
+\begin{figure}[!ht]\includegraphics[trim={0cm 0cm 0 0},clip, keepaspectratio,width=0.99\textwidth]{sliceselection}\label{fig:sliceselection}\end{figure}
+\end{column}
+\end{columns}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Nyquist criterion, resolution and contrast}
-
 \begin{align*}
-&(FOV)^{-1}\Delta k<\frac{1}{A}\\
+&(FOV)^{-1}=\Delta k<\frac{1}{A}\\
 &(\Delta k_R=\gammabar\int_t^{t+\Delta t}d t'G_R(t')=\frac{1}{L_R}<\frac{1}{A_R})\\
 &f_R=BW_{read}=\frac{1}{\Delta t}=\gammabar G_RL_R>\gammabar G_RA_R
 \end{align*}
