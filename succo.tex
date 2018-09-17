@@ -57,13 +57,13 @@ Flip-angle: $\Delta\theta=\gamma B_1\tau$
 \end{columns}
     Nel riferimento del Lab la magnetizzazione ruota con velocit\'a angolare costante:
     \begin{align*}
-    &M_x=u\cos{\omega t}-v\sin{\omega t}=\sqrt{u^2+v^2}\cos{\omega t-\phi}\\
-    &M_y=u\cos{\omega t}+v\sin{\omega t}=\sqrt{u^2+v^2}\sin{\omega t-\phi}\\
+    &M_x=u\cos{\omega t}-v\sin{\omega t}=\sqrt{u^2+v^2}\cos{(\omega t-\phi)}\\
+    &M_y=u\cos{\omega t}+v\sin{\omega t}=\sqrt{u^2+v^2}\sin{(\omega t-\phi)}\\
     &M_z=M_z
 \end{align*}
 \end{frame}
 
-\begin{frame}{Situazione intermedia: $\omega_1T_{1,2}\approx1$, $\Delta\omeaga\approx0$ intorno.}
+\begin{frame}{Situazione intermedia: $\omega_1T_{1,2}\approx1$, $\Delta\omega\approx0$ intorno.}
 \begin{columns}[T]
 \begin{column}{0.5\textwidth}
 \begin{figure}
@@ -74,6 +74,12 @@ Flip-angle: $\Delta\theta=\gamma B_1\tau$
 \end{column}
 \begin{column}{0.5\textwidth}
 Variazioni in funzione di $\Delta\omega$ nel sistema rotante. $T_1=T_2=T_R$ - regime di semi-saturazione.
+Magnetizzazione complessa per descrivere dissipazione: $M_{x/y}=(\chi'-j\chi'')H_{1,x/y}$. Infatti:
+\begin{align*}
+&M_x=u\cos{(\omega t)}-v\sin{(\omega t)}\\
+&=u\frac{B_{1x}}{B_1}-v\frac{B_{1y}}{B_1}=u\frac{B_{1x}}{B_1}-vj\frac{B_{1x}}{B_1}\\
+&=\mu_0(a-jb)H_{1,x}
+\end{align*}
 \end{column}
 \end{columns}
 \end{frame}
@@ -92,7 +98,40 @@ Local field variation: dephasing $T_2$.
 \end{align*}
 \end{frame}
 
+\begin{frame}{Relaxation for spin $1/2$: $T_1$}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+$\vec{H^*}$: random magnetic field
+\begin{align*}
+&\TDy{t}{\vec{S}}=\gamma\vec{S}\wedge\vec{H}_0+\gamma\vec{S}\wedge\vec{H^*}
+\end{align*}
+Le componenti di $\vec{H^*}$ non sono correlate, $\exv{H_x^2}=\exv{H_y^2}$, la funzione di autocorrelazione di una componente \'e $\exv{H_x^*(t+\tau)H_x^*(t)}=\exv{H_x^{*2}}\exp{-\tau/\tau_c}$.
+L'equazione per $S_z$ riferita al rif. Lab, e con $t_1=t$, $t_2=\tau$:
+\end{column}
+\begin{column}{0.5\textwidth}
+Soluzioni partendo da $S_z(0)\neq0$, $S_x(0)=S_y(0)=0$:
+\begin{align*}
+&S_y(t_1)=-\gamma S_z(0)\int_0^{t_1}H_y^*(t_2)d\,t_2\\
+&S_y(t_1)=\gamma S_z(0)\int_0^{t_1}H_x^*(t_2)d\,t_2\\
+&S_z(t_1)=S_z(0)\\
+&S_z(T)=S_z(0)+\\
+&+\gamma\int_0^Td\,t_1[S_x(t_1)H_y^*(t_1)-S_y(t_1)H_x^*(t_1)]
+\end{align*}
+\end{column}
+\end{columns}
+\begin{align*}
+&S_z(T)-S_z(0)=-\gamma^2S_z(0)(\exv{H_x^{*2}}+\exv{H_y^{*2}})\int_0^Td\,t\int_0^td\,\tau\cos{(\omega_0\tau)}\exp{-\tau/\tau_c}\\
+&\to[S_z(T)-S_z(0)]=-\frac{TS_z(0)}{T_1}\\
+&\frac{1}{T_1}=\gamma^2(\exv{H_x^{*2}}+\exv{H_y^{*2}})\frac{\tau_c}{1+\omega_0^2\tau_c^2}
+\end{align*}
+\end{frame}
 
+\begin{frame}{Relaxation for spin $1/2$: $T_2$}
+\begin{align*}
+&S_x(T)-S_x(0)=-\gamma^2S_x(0)\int_0^Td\,t_1\int_0^{t_1}d\,t_2[H_y^*(t_1)H_y^*(t_2)+H_z^*(t_1)H_z^*(t_2)]\\
+&\frac{1}{T_2}=\gamma^2[\tau_c\exv{H_z^{*2}}+\frac{1}{2}(\exv{H_x^{*2}}+\exv{H_y^{*2}})\frac{\tau_c}{1+\omega_0^2\tau_c^2}]
+\end{align*}
+\end{frame}
 
 \begin{wordonframe}{Magnetismo elettronico}
 La maggior parte delle molecole hanno stato fondamentale elettronico $S=L=0$: no momento magnetico. Eccezioni: $\cel{O}{2}{}{}$ con stato fondamentale $S=1$, composti con metalli di transizione, molecole con elettroni dispari.
