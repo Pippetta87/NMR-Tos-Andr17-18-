@@ -197,33 +197,44 @@ Si ha:
 \begin{frame}{K-space coverage}
 \begin{figure}[!ht]\includegraphics[trim={0cm 5cm 0 0},clip, keepaspectratio,height=0.3\textheight]{FID-k}\end{figure}
 
-\begin{figure}[!ht]\includegraphics[trim={0cm 0cm 0 0},clip, keepaspectratio,height=0.6\textheight]{SE-GE-k}\end{figure}
+\begin{figure}[!ht]\includegraphics[trim={0cm 0cm 0 0},clip, keepaspectratio,height=0.45\textheight]{SE-GE-k}\end{figure}
 \end{frame}
 
-\begin{frame}[allowframebreaks]{Imaging in 3D: 3D imaging  vs 2D multislice imaging}
-\begin{block}{3D imaging}
-\begin{figure}[!ht]\includegraphics[trim={0cm 0cm 0 0},clip, keepaspectratio,height=0.5\textheight]{3Dimaging}\label{fig:3Dimaging}\end{figure}
+\begin{frame}{3D imaging}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{figure}[!ht]\includegraphics[trim={0cm 0cm 0 0},clip, keepaspectratio,width=0.99\textwidth]{3Dimaging}\label{fig:3Dimaging}\end{figure}
+\end{column}
+\begin{column}{0.5\textwidth}
 \begin{align*}
 &s(\vec{k})=\int d^3 r\rho(\vec{r})\exp{-i2\pi \scap{k}{r}}\\
 &k_i(t)=\gammabar\int_0^tG_i(t')d t'\\
 &\mathcal{F}s(\vec{k})\propto\rho(\vec{r})
 \end{align*}
-\end{block}
-\begin{block}{2D multi-slice imaging}
-Slice selection, $f(z)=f_0+\gammabar G_zz$: $z_0\pm\frac{\Delta z}{2}$ quindi $f_{RF}=\gammabar G_zz_0-\gammabar G_z\frac{\Delta z}{2}\gammabar G_zz_0+\gammabar G_z\frac{\Delta z}{2}$, cio\'e $BW_{RF}=\Delta f$. Imponiamo che nella slice il flip-angle sia uniforme
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{2D multi-slice imaging}
+\begin{columns}[T]
+\begin{column}{0.55\textwidth}
+\begin{figure}[!ht]\includegraphics[trim={0cm 0cm 0 0},clip, keepaspectratio,width=0.99\textwidth]{sliceselection}\label{fig:sliceselection}\end{figure}
+\end{column}
+\begin{column}{0.45\textwidth}
+Slice selection, $f(z)=f_0+\gammabar G_zz$: $z_0\pm\frac{\Delta z}{2}$ quindi $f_{RF}=\gammabar G_zz_0-\gammabar G_z\frac{\Delta z}{2}\gammabar G_zz_0+\gammabar G_z\frac{\Delta z}{2}$, cio\'e $BW_{RF}=\Delta f$. Imponiamo che nella slice il flip-angle sia uniforme.
 \begin{align*}
-&RF(f)=\rect{\frac{\Delta f}{f}}:\ -\gammabar G_z\frac{\Delta z}{2}\leq f\leq \gammabar G_z\frac{\Delta z}{2}\\
+&RF(f)=\rect{\frac{\Delta f}{f}}:\\
+&-\gammabar G_z\frac{\Delta z}{2}\leq f\leq \gammabar G_z\frac{\Delta z}{2}\\
 &B_1(t)=\sinc{(\pi\Delta f t)}
 \end{align*}
-
-\begin{figure}[!ht]\includegraphics[trim={0cm 0cm 0 0},clip, keepaspectratio,width=0.3\textwidth]{sliceGBW}\label{fig:sliceGBW}\end{figure} 
-
 Rephasing gradient: $\frac{|\int d tG_{rephase}|}{|\int d tG_{SS}|}=50\%$.
-
-\begin{figure}[!ht]\includegraphics[trim={0cm 0cm 0 0},clip, keepaspectratio,width=0.4\textwidth]{sliceselection}\label{fig:sliceselection}\end{figure}
-
-\end{block}
+\end{column}
+\end{columns}
 \end{frame}
+
+\begin{wordonframe}{2D slice selection parameters}
+\begin{figure}[!ht]\includegraphics[trim={0cm 0cm 0 0},clip, keepaspectratio,width=0.99\textwidth]{sliceGBW}\label{fig:sliceGBW}\end{figure}
+\end{wordonframe}
 
 \section{Filtering and resolution in Fourier T imaging}
 
@@ -288,10 +299,9 @@ approximable in most MRI cases ($\Delta k=\gammabar|G|\Delta t\ll\gammabar|G|T_2
 with $\alpha=\frac{T_s}{2T_2^*}$
 \end{frame}
 
-\section{Noise and contrast}\linkdest{noisecontrast}
+\section{Noise and contrast}
 
 \begin{frame}[allowframebreaks]{Signal and thermal noise}
-
 \begin{block}{Segnale misurato}
 Segnale misurato $s_m(k)$ somma $s_m(k)=s(k)+\epsilon(k)$ con funzione di autocorrelazione del rumor
 \begin{equation*}
@@ -334,7 +344,7 @@ Degrading resolution to improve SNR.
 \end{frame}
 
 \begin{frame}{Contrasto}
-    \begin{block}{Contrasto tessuto A/B}
+    \begin{block}{Contrasto tessuto A/B: weighting}
 \begin{align*}
 &C_{AB}=S_A-S_B\\
 &=\rho_{0A}(1-\exp{-\frac{T_R}{T_{1A}}})\exp{-\frac{T_E}{T*_{2A}}}-\rho_{0B}(1-\exp{-\frac{T_R}{T_{1B}}})\exp{-\frac{T_E}{T*_{2B}}}
@@ -346,17 +356,28 @@ Spin density weighting:
 $T_1$-weighting: $T_E\ll {T_2^*}_{AB}$.
 $T_2^*$-weighting: $T_R\gg {T_1}_{AB}$.
 \end{block}
+Contrast2Noise ratio $\CNR{}$: $CNR_{AB}=\frac{C_{AB}}{\sigma_0}=\SNR{}_A-\SNR{}_B$.
 \end{frame}
 
 \section{FAt-Water separation}
 
-\begin{wordonframe}{Fat-Water separation methods}
+\begin{frame}{Fat-Water separation methods}
+\begin{columns}
+\begin{column}{0.5\textwidth}
 \begin{itemize}
-    \item Chemical shift
-    \item Selective excitation and tissue nulling
-    \item Multiple point separation methods
+    \item Chemical shift. $\Delta f_{fw}=f_f-f_w=-\sigma_{fw}\gammabar B_0$, $\sigma_{fw}\approx3.35\ppm$ (\SI{214}{\hertz} at \SI{1.5}{\tesla})
+    \item Selective excitation. Si eccita fat con narrow band impulse then water: water \'e off-resonance by chem shift.
+    \item Tissue Nulling. Inversion recovery con $T_I$ short e $T_R$ long ().
+    \item Multiple point: acquisendo immagini a $T_E$ diversi si possono separare W/F; $\rho_m(T_E)=\rho_{m,w}+\rho_{m,f}\exp{-i\Delta\omega_{fw}T_E}$.
 \end{itemize}
-\end{wordonframe}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+    \item $T_{1w}>T_{1f}$: for dhort $T_R$ Water/fat image is reduce by $\frac{s_w}{s_f}\approx\frac{T_R}{T_{1w}}/(\frac{T_R}{T_{1f}})=\frac{T_{1f}}{T_{1w}}$
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
 
 \section{Random walks, relaxation and diffusion}
 
